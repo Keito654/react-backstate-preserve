@@ -10,37 +10,26 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  publish-gpr:
     runs-on: ubuntu-22.04
     strategy:
       matrix:
         node-version: [20]
-    steps:
-    - uses: actions/checkout@v3
-    - uses: pnpm/action-setup@v2
-      with:
-        version: 8
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'pnpm'
-    - name: Install dependencies
-      run: pnpm install
-
-  publish-gpr:
-    needs: build
-    runs-on: ubuntu-22.04
     permissions:
       contents: read
       packages: write
     steps:
       - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
       - uses: actions/setup-node@v3
         with:
-          node-version: 20
+          node-version: ${{ matrix.node-version }}
           registry-url: https://npm.pkg.github.com/
-          scope: "@Keito654"
+          scope: '@Keito654'
+          cache: 'pnpm'
+      - run: pnpm install
       - run: pnpm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}

@@ -1,6 +1,6 @@
 {
   "name": "@Keito654/react-backstate-preserve",
-  "version": "0.0.0",
+  "version": "1.0.1",
   "type": "module",
   "main": "./dist/index.umd.cjs",
   "types": "./dist/types/index.d.ts",

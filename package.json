@@ -1,5 +1,5 @@
 {
-  "name": "react-backstate-preserve",
+  "name": "@Keito654/react-backstate-preserve",
   "version": "0.0.0",
   "type": "module",
   "main": "./dist/index.umd.cjs",
@@ -20,8 +20,7 @@
     }
   },
   "publishConfig": {
-    "access": "restricted",
-    "registry": "https://npm.pkg.github.com/Keito654"
+    "registry": "https://npm.pkg.github.com"
   },
   "scripts": {
     "prepublishOnly": "pnpm run build",

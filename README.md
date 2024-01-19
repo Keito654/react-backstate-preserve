@@ -1,30 +1,56 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# react-backstate-preserve
 
-Currently, two official plugins are available:
+`react-backstate-preserve` is a React library designed to persist component states across browser navigation, such as the back and forward button usage. It prevents state reset when navigating back to a component, ensuring a smoother user experience.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- **State Persistence**: Maintains the state of React components during browser navigation.
+- **Easy to Use**: Implements a custom React hook and context provider to seamlessly integrate with your existing React applications.
+- **TypeScript Support**: Fully supports TypeScript for type safety and better development experience.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Installation
 
-- Configure the top-level `parserOptions` property like this:
+Install `react-backstate-preserve` with npm:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
+```bash
+npm install react-backstate-preserve
+```
+
+Or with yarn:
+
+```bash
+yarn add react-backstate-preserve
+```
+
+## Usage
+
+Import and wrap your components with `StateHistoryProvider` and use `useStateWithHistory` hook to preserve the state.
+
+```tsx
+import { StateHistoryProvider, useStateWithHistory } from 'react-backstate-preserve';
+
+function YourComponent() {
+  const [value, setValue] = useStateWithHistory<string>('', 'unique-key');
+
+  return (
+    <input value={value} onChange={(e) => setValue(e.target.value)} />
+  );
+}
+
+function App() {
+  return (
+    <StateHistoryProvider>
+      <YourComponent />
+    </StateHistoryProvider>
+  );
 }
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Contributing
+
+Contributions are always welcome! Please read the contribution guidelines first.
+
+## License
+
+Distributed under the MIT License.

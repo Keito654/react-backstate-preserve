@@ -20,7 +20,7 @@
     }
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "@Keito654:registry": "https://npm.pkg.github.com"
   },
   "scripts": {
     "prepublishOnly": "pnpm run build",

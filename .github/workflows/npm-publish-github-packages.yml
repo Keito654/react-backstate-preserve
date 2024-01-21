@@ -29,6 +29,6 @@ jobs:
           registry-url: https://npm.pkg.github.com/
           cache: 'pnpm'
       - run: pnpm install
-      - run: pnpm publish
+      - run: pnpm publish --sno-git-checks
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}

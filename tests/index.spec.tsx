@@ -26,6 +26,7 @@ test.describe("test", () => {
     await expect(page.getByText("name:test, check:true")).toBeVisible();
   });
 
+
   test("preserve two states", async ({ page }) => {
     const input = page.getByPlaceholder("textarea");
     await input.fill("add test state");
@@ -35,6 +36,24 @@ test.describe("test", () => {
 
     await page.getByRole("link", { name: "to second page" }).click();
     await page.getByRole("link", { name: "TOP" }).click();
+
+    const inputted = await page.getByPlaceholder("textarea").inputValue();
+    expect(inputted).toBe("add test state");
+
+    await expect(page.getByText("name:test, check:true")).toBeVisible();
+  });
+
+  test("preserve two states when back button in the browser is clicked", async ({
+    page,
+  }) => {
+    const input = page.getByPlaceholder("textarea");
+    await input.fill("add test state");
+
+    const button = page.getByRole("button", { name: "obj button" });
+    await button.click();
+
+    await page.getByRole("link", { name: "to second page" }).click();
+    await page.goBack();
 
     const inputted = await page.getByPlaceholder("textarea").inputValue();
     expect(inputted).toBe("add test state");

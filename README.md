@@ -1,4 +1,3 @@
-
 # react-backstate-preserve
 
 `react-backstate-preserve` is a React library designed to persist component states across browser navigation, such as the back and forward button usage. It prevents state reset when navigating back to a component, ensuring a smoother user experience.

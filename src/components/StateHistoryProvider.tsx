@@ -1,24 +1,25 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { createContext, useState, ReactNode } from "react";
+import type { ReactNode } from 'react';
+import React, { createContext, useState } from 'react';
 
 interface StateHistoryContextProps {
   state: { [key: string]: any };
   setState: React.Dispatch<React.SetStateAction<{ [key: string]: any }>>;
 }
 
-export const StateHistoryContext =
-  createContext<StateHistoryContextProps | null>(null);
+export const StateHistoryContext
+  = createContext<StateHistoryContextProps | null>(null);
 
-interface StateHistoryProvider {
+interface StateHistoryProviderType {
   children: ReactNode;
 }
 
-export const StateHistoryProvider: React.FC<StateHistoryProvider> = ({
+export const StateHistoryProvider: React.FC<StateHistoryProviderType> = ({
   children,
 }) => {
   const [state, setState] = useState<{ [key: string]: any }>({});
 
   return (
+    // eslint-disable-next-line react/no-unstable-context-value
     <StateHistoryContext.Provider value={{ state, setState }}>
       {children}
     </StateHistoryContext.Provider>

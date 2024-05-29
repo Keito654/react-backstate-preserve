@@ -1,25 +1,26 @@
 {
   "name": "@keito654/react-backstate-preserve",
-  "version": "0.1.0",
   "type": "module",
-  "main": "./dist/index.umd.cjs",
-  "types": "./dist/types/index.d.ts",
+  "version": "0.1.0",
+  "packageManager": "pnpm@8.15.1+sha256.245fe901f8e7fa8782d7f17d32b6a83995e2ae03984cb5b62b8949bfdc27c7b5",
   "author": "keito654",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/keito654/react-backstate-preserve"
   },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.umd.cjs"
+    }
+  },
+  "main": "./dist/index.umd.cjs",
+  "types": "./dist/types/index.d.ts",
   "files": [
     "dist"
   ],
-  "exports": {
-    ".": {
-      "require": "./dist/index.umd.cjs",
-      "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
-    }
-  },
   "publishConfig": {
     "@keito654:registry": "https://npm.pkg.github.com"
   },
@@ -27,30 +28,30 @@
     "prepublishOnly": "pnpm run build",
     "dev": "vite",
     "build": "tsc && vite build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint": "eslint src tests",
+    "lint:fix": "eslint src tests --fix",
     "preview": "vite preview",
     "test": "playwright test",
     "test:ui": "playwright test --ui"
   },
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@playwright/test": "^1.41.2",
-    "@types/node": "^20.11.5",
-    "@types/react": "^18.2.43",
-    "@types/react-dom": "^18.2.17",
-    "@typescript-eslint/eslint-plugin": "^6.14.0",
-    "@typescript-eslint/parser": "^6.14.0",
-    "@vitejs/plugin-react-swc": "^3.5.0",
-    "eslint": "^8.55.0",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.5",
-    "react-router-dom": "^6.22.0",
-    "typescript": "^5.2.2",
-    "vite": "^5.0.8",
-    "vite-plugin-dts": "^3.7.1"
-  },
-  "packageManager": "pnpm@8.15.1+sha256.245fe901f8e7fa8782d7f17d32b6a83995e2ae03984cb5b62b8949bfdc27c7b5"
+    "@antfu/eslint-config": "^2.19.1",
+    "@eslint-react/eslint-plugin": "^1.5.13",
+    "@playwright/test": "^1.44.1",
+    "@types/node": "^20.12.12",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react-swc": "^3.7.0",
+    "eslint": "9.2.0",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-react-refresh": "^0.4.7",
+    "react-router-dom": "^6.23.1",
+    "typescript": "^5.4.5",
+    "vite": "^5.2.12",
+    "vite-plugin-dts": "^3.9.1"
+  }
 }

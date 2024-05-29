@@ -1,18 +1,17 @@
-import type { FC } from "react";
-import React from "react";
-import { Link } from "react-router-dom";
-import { useStateWithHistory } from "../../src";
+import type { FC } from 'react';
+import { Link } from 'react-router-dom';
+import { useStateWithHistory } from '../../src';
 
-type Obj = {
+interface Obj {
   name: string;
   check: boolean;
-};
+}
 
 const TopPage: FC = () => {
-  const [text, setText] = useStateWithHistory("", "text");
+  const [text, setText] = useStateWithHistory('', 'text');
   const [obj, setObj] = useStateWithHistory<Obj>(
-    { name: "test", check: false },
-    "obj"
+    { name: 'test', check: false },
+    'obj',
   );
 
   return (
@@ -21,14 +20,13 @@ const TopPage: FC = () => {
         type="text"
         value={text}
         placeholder="textarea"
-        onChange={(e) => setText(e.target.value)}
+        onChange={e => setText(e.target.value)}
       />
       <button
         onClick={() =>
           setObj((prev) => {
             return { ...prev, check: true };
-          })
-        }
+          })}
       >
         obj button
       </button>
